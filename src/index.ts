@@ -20,8 +20,8 @@ app.register(index);
 
 const start = ()=>{
     try{
-        app.listen({port:5000});
-        app.log.info("Running on http://localhost:5000");
+        app.listen({port:8080});
+        app.log.info("Running on http://localhost:8080");
     }catch(err){
         app.log.error(err);
         process.exit(1);

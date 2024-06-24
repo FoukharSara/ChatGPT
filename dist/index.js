@@ -14,11 +14,12 @@ mongoose_1.default.connect('mongodb://127.0.0.1:27017/crud')
 }).catch(() => {
     app.log.error("Not Connected");
 });
+//routes
 app.register(index_1.default);
 const start = () => {
     try {
-        app.listen({ port: 5000 });
-        app.log.info("Running on http://localhost:5000");
+        app.listen({ port: 8080 });
+        app.log.info("Running on http://localhost:8080");
     }
     catch (err) {
         app.log.error(err);
