@@ -1,5 +1,8 @@
 import fastify from "fastify";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = fastify({
 	logger: true,
@@ -9,7 +12,7 @@ const { DB_USER, DB_PASSWORD, DB_NAME, DB_PORT } = process.env;
 
 export async function connect(): Promise<any> {
 	mongoose.connect(
-		`mongodb://${DB_USER}:${DB_PASSWORD}@mongo:${DB_PORT}/${DB_NAME}`,
+		`mongodb://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}`,
 		{
 			socketTimeoutMS: 480000,
 		}
@@ -18,7 +21,7 @@ export async function connect(): Promise<any> {
 
 connect()
 	.then(() => {
-		console.log(`Database running at port ${DB_PORT}`);
+		console.log(`Database running at port 27017`);
 	})
 	.catch((err) => {
 		console.log("Failed to connect to database");
@@ -27,7 +30,7 @@ connect()
 	});
 
 app.get("/", async (req, res) => {
-	return "OK";
+	res.send("OK");
 });
 
 const { API_PORT, NODE_ENV } = process.env;
