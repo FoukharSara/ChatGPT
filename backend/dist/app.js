@@ -16,6 +16,7 @@ exports.connect = void 0;
 const fastify_1 = __importDefault(require("fastify"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const index_1 = __importDefault(require("./routes/index"));
 dotenv_1.default.config();
 const app = (0, fastify_1.default)({
     logger: true,
@@ -38,9 +39,7 @@ connect()
     console.error(err);
     process.exit(1);
 });
-app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send("OK");
-}));
+app.register(index_1.default);
 const { API_PORT, NODE_ENV } = process.env;
 const options = {
     port: parseInt(API_PORT !== null && API_PORT !== void 0 ? API_PORT : "3000"),

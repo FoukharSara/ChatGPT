@@ -1,6 +1,8 @@
 import fastify from "fastify";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import index from './routes/index';
+
 
 dotenv.config();
 
@@ -29,9 +31,8 @@ connect()
 		process.exit(1);
 	});
 
-app.get("/", async (req, res) => {
-	res.send("OK");
-});
+app.register(index);
+
 
 const { API_PORT, NODE_ENV } = process.env;
 
