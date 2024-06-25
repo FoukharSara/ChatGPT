@@ -1,0 +1,8 @@
+{
+	"watch": ["./**/*"],
+	"ext": "ts",
+	"exec": "ts-node app.ts",
+	"verbose": true,
+	"ignore": ["*.test.ts", "node_modules/"],
+	"legacyWatch": true
+}

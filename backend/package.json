@@ -1,0 +1,18 @@
+{
+	"name": "gpt4provider",
+	"version": "1.0.0",
+	"description": "",
+	"main": "dist/app.js",
+	"scripts": {},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"fastify": "^4.28.0",
+		"fastify-plugin": "^4.5.1",
+		"mongoose": "^8.4.3"
+	},
+	"devDependencies": {
+		"nodemon": "^3.0.1",
+		"ts-node": "^10.9.1"
+	}
+}
