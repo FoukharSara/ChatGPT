@@ -21,6 +21,8 @@ export async function connect(): Promise<any> {
 	);
 }
 
+
+
 connect()
 	.then(() => {
 		console.log(`Database running at port 27017`);
@@ -31,6 +33,7 @@ connect()
 		process.exit(1);
 	});
 
+//route
 app.register(index);
 
 
@@ -50,3 +53,5 @@ app.listen(options, (err, address) => {
 	console.log(`Started at ${new Date()}`);
 	console.log(`Environment => ${NODE_ENV}`);
 });
+
+

@@ -8,13 +8,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-//FastifyInstance to catxh errors and stuff with typing such us fastify.gte(....) wouldnt give us an eror if not for fastifyInstance
+const response_1 = __importDefault(require("../models/response"));
 function indexRoute(fastify) {
     return __awaiter(this, void 0, void 0, function* () {
-        fastify.get('/', (req, res) => {
-            res.send("hello");
-        });
+        fastify.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const prompt = yield response_1.default.findOne();
+                if (prompt) {
+                    res.send(prompt);
+                }
+                else {
+                    res.status(404).send({ message: 'No prompt found' });
+                }
+            }
+            catch (error) {
+                res.status(500).send({ error: 'Error fetching prompt from database' });
+            }
+        }));
     });
 }
 exports.default = indexRoute;

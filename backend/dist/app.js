@@ -39,6 +39,7 @@ connect()
     console.error(err);
     process.exit(1);
 });
+//route
 app.register(index_1.default);
 const { API_PORT, NODE_ENV } = process.env;
 const options = {
