@@ -1,7 +1,7 @@
 import fastify from "fastify";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import index from './routes/index';
+import index from './src/routes/index';
 
 
 dotenv.config();
@@ -12,16 +12,16 @@ const app = fastify({
 
 const { DB_USER, DB_PASSWORD, DB_NAME, DB_PORT } = process.env;
 
+
 export async function connect(): Promise<any> {
 	mongoose.connect(
 		`mongodb://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}`,
 		{
 			socketTimeoutMS: 480000,
+			
 		}
 	);
 }
-
-
 
 connect()
 	.then(() => {
@@ -44,6 +44,12 @@ const options = {
 	port: parseInt(API_PORT ?? "3000"),
 	host: "0.0.0.0",
 };
+
+// fetch('https://www.youtube.com/')
+//   .then(data => console.log('Data:', data))
+//   .catch(error => console.error('Error fetching data:', error));
+
+
 app.listen(options, (err, address) => {
 	if (err) {
 		console.error(err);

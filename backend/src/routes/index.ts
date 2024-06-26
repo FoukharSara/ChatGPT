@@ -2,9 +2,10 @@ import { FastifyInstance } from 'fastify';
 import resPrompt from '../models/response'; 
 
 export default async function indexRoute(fastify: FastifyInstance) {
-    fastify.get('/', async (req, res) => {
+     fastify.get('/', async (req, res) => {
+        console.log(await resPrompt.find());
         try {
-            const prompt = await resPrompt.findOne();
+            const prompt = await resPrompt.find();
             if (prompt) {
                 res.send(prompt);
             } else {

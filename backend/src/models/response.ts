@@ -15,21 +15,23 @@ const resPromptSchema: Schema = new Schema({
 // Model
 const resPrompt = model<resPromptI>('PromptResponse', resPromptSchema);
 
-export async function saveData() {
-    try {
-        const newData = {
-            prompt: 'What is your favorite color?',
-            response: 'My favorite color is blue.'
-        };
-        const result = await resPrompt.create(newData);
-        console.log('Data saved successfully:', result);
-    } catch (error) {
-        console.error('Error saving data:', error);
-    }
-}
-
-saveData();
-
 export default resPrompt;
+
+
+// export async function saveData() {
+//     try {
+//         const newData = {
+//             prompt: 'What is your favorite color?',
+//             response: 'My favorite color is blue.'
+//         };
+//         const result = await resPrompt.create(newData);
+//         console.log('Data saved successfully:', result);
+//     } catch (error) {
+//         console.error('Error saving data:', error);
+//     }
+// }
+
+// saveData();
+
 
 
