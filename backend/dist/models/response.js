@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.saveData = void 0;
 const mongoose_1 = require("mongoose");
 // Schema
 const resPromptSchema = new mongoose_1.Schema({
@@ -17,20 +18,22 @@ const resPromptSchema = new mongoose_1.Schema({
 });
 // Model
 const resPrompt = (0, mongoose_1.model)('PromptResponse', resPromptSchema);
-const saveData = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const newData = {
-            prompt: 'What is your favorite color?',
-            response: 'My favorite color is blue.'
-        };
-        const result = yield resPrompt.create(newData);
-        console.log('Data saved successfully:', result);
-    }
-    catch (error) {
-        console.error('Error saving data:', error);
-    }
-});
-// Call saveData function to test it
+function saveData() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const newData = {
+                prompt: 'What is your favorite color?',
+                response: 'My favorite color is blue.'
+            };
+            const result = yield resPrompt.create(newData);
+            console.log('Data saved successfully:', result);
+        }
+        catch (error) {
+            console.error('Error saving data:', error);
+        }
+    });
+}
+exports.saveData = saveData;
 saveData();
 exports.default = resPrompt;
 //# sourceMappingURL=response.js.map
