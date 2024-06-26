@@ -22,7 +22,6 @@ export async function connect(): Promise<any> {
 		}
 	);
 }
-
 connect()
 	.then(() => {
 		console.log(`Database running at port 27017`);
