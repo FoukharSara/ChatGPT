@@ -16,7 +16,7 @@ const resPromptSchema: Schema = new Schema({
 const resPrompt = model<resPromptI>('PromptResponse', resPromptSchema);
 
 export default resPrompt;
-
+false
 
 // 
 
