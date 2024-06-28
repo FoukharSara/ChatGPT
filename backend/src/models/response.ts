@@ -4,9 +4,15 @@ import { Schema, model } from "mongoose";
 export interface PromptResponseI extends Document {
   prompt: string;
   response: string;
+export interface PromptResponseI extends Document {
+  prompt: string;
+  response: string;
 }
 
 // Schema
+const PromptResponseSchema: Schema = new Schema({
+  prompt: { type: String, required: true },
+  response: { type: String, required: true },
 const PromptResponseSchema: Schema = new Schema({
   prompt: { type: String, required: true },
   response: { type: String, required: true },
@@ -17,5 +23,11 @@ const PromptResponse = model<PromptResponseI>(
   "PromptResponse",
   PromptResponseSchema
 );
+const PromptResponse = model<PromptResponseI>(
+  "PromptResponse",
+  PromptResponseSchema
+);
+
+export default PromptResponse;
 
 export default PromptResponse;

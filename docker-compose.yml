@@ -17,6 +17,8 @@ services:
       - mongo
     networks:
       - custom-network
+    networks:
+      - custom-network
 
   mongo:
     image: mongo:latest
@@ -29,6 +31,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
       MONGO_INITDB_DATABASE: ${DB_NAME}
+    networks:
+      - custom-network
     networks:
       - custom-network
 
