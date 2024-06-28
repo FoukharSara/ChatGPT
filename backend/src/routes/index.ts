@@ -37,10 +37,8 @@ export const sampleHandler = (req: FastifyRequest, res: FastifyReply) => {
 };
 
 export const indexHandler = async (req: FastifyRequest, res: FastifyReply) => {
-  console.log("Hna");
   await saveData();
   console.log(await PromptResponse.find({}));
-  console.log("hnayaa");
   try {
     const prompt = await PromptResponse.find({});
     if (prompt) {

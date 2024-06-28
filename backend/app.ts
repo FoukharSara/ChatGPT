@@ -9,12 +9,12 @@ const app = fastify({
   logger: true,
 });
 
-const { DB_USER, DB_PASSWORD, DB_NAME, DB_PORT, API_PORT, NODE_ENV } =
+const { DB_USER, DB_PASSWORD, DB_PORT, API_PORT ,NODE_ENV } =
   process.env;
 
 export async function connect(): Promise<any> {
   mongoose.connect(
-    `mongodb://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}`,
+    `mongodb://${DB_USER}:${DB_PASSWORD}@mongo:${DB_PORT}`,
     {
       socketTimeoutMS: 480000,
     }
@@ -29,6 +29,8 @@ connect()
     console.error(err);
     process.exit(1);
   });
+
+
 
 //route
 app.get("/", indexHandler);
