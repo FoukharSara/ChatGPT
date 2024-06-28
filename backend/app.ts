@@ -35,7 +35,6 @@ connect()
 
 //route
 app.get("/", indexHandler);
-app.get("/", indexHandler);
 
 const options = {
   port: parseInt(API_PORT ?? "3000"),
