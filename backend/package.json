@@ -12,7 +12,8 @@
 		"fastify-mongodb": "^4.2.0",
 		"fastify-plugin": "^4.5.1",
 		"mongodb": "^6.8.0",
-		"mongoose": "^8.4.3"
+		"mongoose": "^8.4.3",
+		"openai": "^4.52.1"
 	},
 	"devDependencies": {
 		"nodemon": "^3.0.1",

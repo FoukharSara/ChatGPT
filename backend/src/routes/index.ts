@@ -1,52 +1,49 @@
 import PromptResponse from "../models/response";
 import { FastifyRequest, FastifyReply } from "fastify";
+import OpenAI from "openai"
 
-export async function saveData() {
-  try {
-    const newData = {
-      prompt: "What is your favorite color?",
-      response: "My favorite color is blue.",
-    };
-    const result = await PromptResponse.create(newData);
-    console.log("Data saved successfully:", result);
-  } catch (error) {
-    console.error("Error saving data:", error);
+// import OpenAIApi from "openai";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+
+
+// config the api 
+const openai = new OpenAI({
+  apiKey:process.env.GPT_API_KEY,
+})
+interface PromptRequestBody {
+  prompt: string;
+}
+
+export const promptHandler = (req:FastifyRequest, res:FastifyReply)=>{
+  const { prompt  } = req.body as PromptRequestBody;
+  try{
+    return res.status(200).send({
+      prompt,
+    });
+  }catch(error){
+    console.log(error);
   }
 }
 
-// saveData();
-// export default async function indexRoute(fastify: FastifyInstance) {
-//      fastify.get('/', async (req, res) => {
-//         console.log(await resPrompt.find());
-//         try {
-//             const prompt = await resPrompt.find();
-//             if (prompt) {
-//                 res.send(prompt);
-//             } else {
-//                 res.status(404).send({ message: 'No prompt found' });
-//             }
-//         } catch (error) {
-//             res.status(500).send({ error: 'Error fetching prompt from database' });
-//         }
-//     });
+
+
+
+
+
+
+
+// export async function saveData() {
+//   try {
+//     const newData = {
+//       prompt: "What is your favorite color?",
+//       response: "My favorite color is blue.",
+//     };
+//     const result = await PromptResponse.create(newData);
+//     console.log("Data saved successfully:", result);
+//   } catch (error) {
+//     console.error("Error saving data:", error);
+//   }
 // }
-
-// REVIEW Sample route handler
-export const sampleHandler = (req: FastifyRequest, res: FastifyReply) => {
-  return res.send({ hello: "world" });
-};
-
-export const indexHandler = async (req: FastifyRequest, res: FastifyReply) => {
-  await saveData();
-  console.log(await PromptResponse.find({}));
-  try {
-    const prompt = await PromptResponse.find({});
-    if (prompt) {
-      res.send(prompt);
-    } else {
-      res.status(404).send({ message: "No prompt found" });
-    }
-  } catch (error) {
-    res.status(500).send({ error: "Error fetching prompt from database" });
-  }
-};
