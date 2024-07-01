@@ -17,6 +17,7 @@ services:
       - mongo
     networks:
       - custom-network
+    
 
   mongo:
     image: mongo:latest
@@ -31,6 +32,7 @@ services:
       MONGO_INITDB_DATABASE: ${DB_NAME}
     networks:
       - custom-network
+    
 
 volumes:
   mongo_data:

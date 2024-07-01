@@ -18,4 +18,6 @@ const PromptResponse = model<PromptResponseI>(
   PromptResponseSchema
 );
 
+
 export default PromptResponse;
+
