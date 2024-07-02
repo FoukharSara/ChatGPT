@@ -1,7 +1,7 @@
 import fastify from "fastify";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { promptHandler } from "./src/routes";
+import { promptHandler } from "./src/routes/prompt.route";
 
 dotenv.config();
 
@@ -30,8 +30,6 @@ connect()
     process.exit(1);
   });
   
-
-
 
 //Route
 app.post("/", promptHandler);
