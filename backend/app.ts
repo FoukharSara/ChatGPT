@@ -1,7 +1,7 @@
 import fastify from "fastify";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { indexHandler } from "./src/routes";
+import { promptHandler } from "./src/routes";
 
 dotenv.config();
 
@@ -9,12 +9,12 @@ const app = fastify({
   logger: true,
 });
 
-const { DB_USER, DB_PASSWORD, DB_PORT, API_PORT ,NODE_ENV } =
+const { DB_USER, DB_PASSWORD,DB_NAME, DB_PORT, API_PORT ,NODE_ENV } =
   process.env;
 
 export async function connect(): Promise<any> {
   mongoose.connect(
-    `mongodb://${DB_USER}:${DB_PASSWORD}@mongo:${DB_PORT}`,
+    `mongodb://${DB_USER}:${DB_PASSWORD}@mongo:${DB_PORT}/${DB_NAME}`,
     {
       socketTimeoutMS: 480000,
     }
@@ -33,8 +33,8 @@ connect()
 
 
 
-//route
-app.get("/", indexHandler);
+//Route
+app.post("/", promptHandler);
 
 const options = {
   port: parseInt(API_PORT ?? "3000"),
