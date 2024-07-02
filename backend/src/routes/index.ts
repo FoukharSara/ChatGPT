@@ -13,6 +13,7 @@ const openai = new OpenAI({
   apiKey:process.env.GPT_API_KEY,
 })
 
+
 //prompt handler
 interface PromptRequestBody {
   prompt: string;
