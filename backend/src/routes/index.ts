@@ -1,9 +1,8 @@
 import PromptResponse from "../models/response";
 import { FastifyRequest, FastifyReply } from "fastify";
 import OpenAI from "openai"
-
-// import OpenAIApi from "openai";
 import dotenv from "dotenv";
+
 
 dotenv.config();
 
@@ -13,18 +12,24 @@ let result : string= "";
 const openai = new OpenAI({
   apiKey:process.env.GPT_API_KEY,
 })
+
+//prompt handler
 interface PromptRequestBody {
   prompt: string;
 }
-
 export const promptHandler = async (req:FastifyRequest, res:FastifyReply)=>{
   const { prompt  } = req.body as PromptRequestBody;
   try{
-    const response = {
-      choices: [{ text: "My current result." }],
-  }
+    const response = await openai.completions.create({
+      model:"gpt-3.5-turbo-instruct",
+      prompt:prompt,
+      max_tokens: 3000,     // that leaves us with 1096 tokens 
+      temperature: 0.7,  
+      top_p: 1,          
+      n: 1,
+    }) ;
     result = response.choices[0].text;
-    saveData(prompt,result);
+    await saveData(prompt, result);
     return res.status(200).send({
       prompt,
       response:response.choices[0].text,
@@ -35,12 +40,12 @@ export const promptHandler = async (req:FastifyRequest, res:FastifyReply)=>{
   }
 }
 
-
-export async function saveData(prompt:string, response:string) {
+//save data in mongodb Compass
+export async function saveData(prompt: string, response:string) {
   try {
     const newData = {
       prompt: prompt,
-      response: result,
+      response: response,
     };
     const results = await PromptResponse.create(newData);
     console.log("Data saved successfully:", results);

@@ -33,7 +33,7 @@ connect()
 
 
 
-//route
+//Route
 app.post("/", promptHandler);
 
 const options = {
