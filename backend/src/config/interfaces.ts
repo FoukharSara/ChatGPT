@@ -1,4 +1,3 @@
 export interface PromptRequestBody {
-    prompt: string;
-  }
-
+  prompt: string;
+}

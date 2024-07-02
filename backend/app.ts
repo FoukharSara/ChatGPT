@@ -9,7 +9,7 @@ const app = fastify({
   logger: true,
 });
 
-const { DB_USER, DB_PASSWORD,DB_NAME, DB_PORT, API_PORT ,NODE_ENV } =
+const { DB_USER, DB_PASSWORD, DB_NAME, DB_PORT, API_PORT, NODE_ENV } =
   process.env;
 
 export async function connect(): Promise<any> {
@@ -29,7 +29,6 @@ connect()
     console.error(err);
     process.exit(1);
   });
-  
 
 //Route
 app.post("/", promptHandler);
