@@ -5,6 +5,7 @@ export default async function (prompt: string, response: string) {
     const newData = {
       prompt: prompt,
       response: response,
+      created_at:new Date(),
     };
     const results = await PromptResponse.create(newData);
     console.log("Data saved successfully:", results);
