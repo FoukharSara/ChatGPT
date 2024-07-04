@@ -7,7 +7,7 @@ export interface PromptResponseI extends Document {
     shortDesc:string,
     longDesc:string,
   }
-  creates_at: Date
+  created_at: Date
 }
 
 // Schema
@@ -17,7 +17,7 @@ const PromptResponseSchema: Schema = new Schema({
     shortDesc:{type : String, required:true},
     longDesc:{type : String, required:true},
   },
-  creates_at:{type:Date, default: Date.now}
+  created_at:{type:Date, default: ()=>Date.now()}
 });
 
 // Model

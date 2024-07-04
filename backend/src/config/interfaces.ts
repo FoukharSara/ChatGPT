@@ -1,3 +1,5 @@
 export interface PromptRequestBody {
-  prompt: string;
+  domain: string;
+  language: string;
+  product_name: string;
 }
