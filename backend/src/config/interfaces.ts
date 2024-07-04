@@ -3,3 +3,4 @@ export interface PromptRequestBody {
   language: string;
   product_name: string;
 }
+
