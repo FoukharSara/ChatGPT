@@ -5,7 +5,7 @@ export default async function (prompt: string, response: string) {
     const newData = {
       prompt: prompt,
       response: response,
-      created_at:new Date(),
+      created_at:new Date(), // FIXME remove this cuz it will use the model default value
     };
     const results = await PromptResponse.create(newData);
     console.log("Data saved successfully:", results);
